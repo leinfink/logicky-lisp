@@ -1,6 +1,7 @@
 # logicky-lisp
 
-Evaluates and proves arguments in different formal logics.
+Evaluate and prove arguments in different formal logics.
+
 Completely rewritten Common Lisp port of [Logicky](https://github.com/leinfink/logicky).  Mostly just to practice Common Lisp.
 
 WIP, not much functionality yet.
