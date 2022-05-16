@@ -3,7 +3,7 @@
 (defsystem "logicky-lisp"
   :author "Henrik Hörmann <leinfink@mailbox.org>"
   :version "0.0.1"
-  :license "GPLv3"
+  :license "BSD-3-Clause"
   :description "Evaluates and proves arguments in different formal logics."
   :homepage ""
   :bug-tracker ""
