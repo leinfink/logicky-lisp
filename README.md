@@ -1,8 +1,9 @@
 # logicky-lisp
 
 Evaluates and proves arguments in different formal logics.
+Mostly just to practice Common Lisp. WIP, not much functionality yet.
 
-# Usage
+## Usage
 
 Run from sources:
 
