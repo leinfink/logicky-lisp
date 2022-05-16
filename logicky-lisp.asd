@@ -17,7 +17,8 @@
   :components ((:module "src"
                         :serial t
                         :components ((:file "packages")
-                                     (:file "logicky-lisp"))))
+                                     (:file "logicky-lisp")
+                                     (:file "logic"))))
 
   ;; Build a binary:
   ;; don't change this line.

@@ -1,14 +1,38 @@
 (in-package :logicky-lisp)
 
-;; Define your project functionality here...
-
-(defun greet (&optional (name "Henrik Hörmann"))
-  (format t "Hello ~a from ~a!~&" name "logicky-lisp"))
+(defun greet ()
+  (help))
 
 (defun help ()
   (format t "~&Usage:
 
-  logicky-lisp [name]~&"))
+  Play around in the REPL in the :logicky-lisp package.
+  Formulas have to be entered as lisp-readable s-expressions.
+  Start with (in-package :logicky-lisp) to avoid needing a prefix everywhere.
+
+  # Commands:
+  (in-package :logicky-lisp)
+  (cl-user::quit) [or (quit)]
+
+  (well-formed-p [formula])
+  (truep [formula])
+  (semantic-consequence-p [conclusion] [premise1] [premise2] [...])
+  (tautologyp [formula])
+  (*interpretation* '((p . t) (q)))
+
+  # Syntax elements:
+  'p 'q 'r [or any other lisp 'atoms]
+  '(l-not p)
+  '(l-or p q)
+  '(l-and p q)
+  '(l-cond p q)
+  '(l-eql p q)
+  '(l-not (l-or p (l-cond r p)))
+
+  # Example commands:
+  (truep '(l-not (l-or p (l-cond r p))))
+
+~&"))
 
 (defun %main (argv)
   "Parse CLI args."
@@ -17,8 +41,7 @@
     ;; clingon, unix-opts, defmain, adopt… when needed.
     (help)
     (uiop:quit))
-  (greet  (or (first argv)
-              "dear lisp user")))
+  (greet))
 
 (defun main ()
   "Entry point for the executable.

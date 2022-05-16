@@ -1,6 +1,4 @@
-;; (defun read-formula (input)
-;;   )
-
+(in-package :logicky-lisp)
 
 ;;; --- Symbols of the object language ---
 
