@@ -1,0 +1,971 @@
+\input texinfo
+
+@c logicky-lisp.texi --- Reference manual
+
+@c Copyright (C) 2022 Henrik Hörmann
+
+@c This file is part of logicky-lisp.
+
+
+
+@c Commentary:
+
+@c Generated automatically by Declt version 3.0 "Montgomery Scott"
+@c on Tue May 17 20:50:42 2022 GMT+1.
+
+
+@c ====================================================================
+@c Header
+@c ====================================================================
+@c %**start of header
+@setfilename logicky-lisp.info
+@settitle The logicky-lisp Reference Manual
+@afourpaper
+@documentencoding UTF-8
+@c %**end of header
+
+
+
+@c ====================================================================
+@c Format Specific Tweaks
+@c ====================================================================
+@tex
+%% Declt uses several Unicode characters to "reveal" blanks. This
+%% works fine in HTML or Info output, but TeX will have problems with
+%% these. The code below translates those characters to something that
+%% TeX can handle.
+
+%% U+23B5 (Bottom Square Bracket), used to reveal white spaces, is
+%% translated to its Computer Modern teletype version.
+\DeclareUnicodeCharacter{23B5}{{\tt\char'040}}
+
+%% U+21B5 (Downwards Arrow With Corner Leftwards), used to reveal
+%% carriage returns, is translated to \hookleftarrow in math mode.
+\DeclareUnicodeCharacter{21B5}{\ensuremath\hookleftarrow}
+
+%% U+21E5 (Rightwards Arrow To Bar), used to reveal tabs, is
+%% translated to something that looks similar, based on a rightarrow
+%% and a vertical bar from the math extension font.
+\DeclareUnicodeCharacter{21E5}{%
+  \ensuremath{\rightarrow\kern-.5em\mathchar\"130C}}
+
+
+%% Declt uses several Unicode characters to replace "fragile" ones in
+%% anchor names and references. These characters are chosen to resemble
+%% the original ones, without interfering with Info syntax. In TeX
+%% however, we can switch them back to the original versions, because
+%% cross-references are done differently. In theory, I think we could do
+%% something similar for HTML output (again, only the Info syntax poses
+%% problems), but I don't know how to do something similar to what's
+%% below.
+
+%% U+2024 (One Dot Leader) replaces periods.
+\DeclareUnicodeCharacter{2024}{.}
+
+%% U+2236 (Ratio) replaces colons.
+\DeclareUnicodeCharacter{2236}{:}
+
+%% U+2768 (Medium Left Parenthesis Ornament) replaces left parenthesis.
+\DeclareUnicodeCharacter{2768}{(}
+
+%% U+2769 (Medium Right Parenthesis Ornament) replaces right parenthesis.
+\DeclareUnicodeCharacter{2769}{)}
+
+%% U+214B (Turned Ampersand) replaces ampersands.
+\DeclareUnicodeCharacter{214B}{&}
+
+%% U+2216 (Set Minus) replaces backslashes.
+\DeclareUnicodeCharacter{2216}{\char"5C}
+
+%% The following ones are already defined in texinfo.tex so we have nothing
+%% more to do:
+%% U+201A (Single Low-9 Quotation Mark) replaces commas.
+%% U+2205 (Empty Set) replaces empty symbol names.
+
+@end tex
+
+
+
+@c ====================================================================
+@c Settings
+@c ====================================================================
+@setchapternewpage odd
+@documentdescription
+The logicky-lisp Reference Manual, version 0.0.1.
+@end documentdescription
+
+
+
+@c ====================================================================
+@c New Commands
+@c ====================================================================
+
+@c ---------------
+@c Indexing macros
+@c ---------------
+
+@c Packages
+@macro packageindex{name}
+@tpindex \name\
+@tpindex @r{Package, }\name\
+@end macro
+
+@c Systems
+@macro systemindex{name}
+@tpindex \name\
+@tpindex @r{System, }\name\
+@end macro
+
+@c Modules
+@macro moduleindex{name}
+@cindex @t{\name\}
+@cindex Module, @t{\name\}
+@end macro
+
+@c Other files
+@macro otherfileindex{name}
+@cindex @t{\name\}
+@cindex Other File, @t{\name\}
+@cindex File, other, @t{\name\}
+@end macro
+
+@c Lisp files
+@macro lispfileindex{name}
+@cindex @t{\name\}
+@cindex Lisp File, @t{\name\}
+@cindex File, Lisp, @t{\name\}
+@end macro
+
+@c C files
+@macro cfileindex{name}
+@cindex @t{\name\}
+@cindex C File, @t{\name\}
+@cindex File, C, @t{\name\}
+@end macro
+
+@c Java files
+@macro javafileindex{name}
+@cindex @t{\name\}
+@cindex Java File, @t{\name\}
+@cindex File, Java, @t{\name\}
+@end macro
+
+@c Static files
+@macro staticfileindex{name}
+@cindex @t{\name\}
+@cindex Static File, @t{\name\}
+@cindex File, static, @t{\name\}
+@end macro
+
+@c Doc files
+@macro docfileindex{name}
+@cindex @t{\name\}
+@cindex Doc File, @t{\name\}
+@cindex File, doc, @t{\name\}
+@end macro
+
+@c HTML files
+@macro htmlfileindex{name}
+@cindex @t{\name\}
+@cindex HTML File, @t{\name\}
+@cindex File, html, @t{\name\}
+@end macro
+
+@c The following macros are meant to be used within @defxxx environments.
+@c Texinfo performs half the indexing job and we do the other half.
+
+@c Constants
+@macro constantsubindex{name}
+@vindex @r{Constant, }\name\
+@end macro
+
+@c Special variables
+@macro specialsubindex{name}
+@vindex @r{Special Variable, }\name\
+@end macro
+
+@c Symbol macros
+@macro symbolmacrosubindex{name}
+@vindex @r{Symbol Macro, }\name\
+@end macro
+
+@c Slots
+@macro slotsubindex{name}
+@vindex @r{Slot, }\name\
+@end macro
+
+@c Macros
+@macro macrosubindex{name}
+@findex @r{Macro, }\name\
+@end macro
+
+@c Compiler Macros
+@macro compilermacrosubindex{name}
+@findex @r{Compiler Macro, }\name\
+@end macro
+
+@c Functions
+@macro functionsubindex{name}
+@findex @r{Function, }\name\
+@end macro
+
+@c Methods
+@macro methodsubindex{name}
+@findex @r{Method, }\name\
+@end macro
+
+@c Generic Functions
+@macro genericsubindex{name}
+@findex @r{Generic Function, }\name\
+@end macro
+
+@c Setf Expanders
+@macro setfexpandersubindex{name}
+@findex @r{Setf Expander, }\name\
+@end macro
+
+@c Method Combinations
+@macro shortcombinationsubindex{name}
+@tpindex @r{Short Method Combination, }\name\
+@tpindex @r{Method Combination, Short, }\name\
+@end macro
+
+@macro longcombinationsubindex{name}
+@tpindex @r{Long Method Combination, }\name\
+@tpindex @r{Method Combination, Long, }\name\
+@end macro
+
+@c Conditions
+@macro conditionsubindex{name}
+@tpindex @r{Condition, }\name\
+@end macro
+
+@c Structures
+@macro structuresubindex{name}
+@tpindex @r{Structure, }\name\
+@end macro
+
+@c Types
+@macro typesubindex{name}
+@tpindex @r{Type, }\name\
+@end macro
+
+@c Classes
+@macro classsubindex{name}
+@tpindex @r{Class, }\name\
+@end macro
+
+
+
+@c ====================================================================
+@c Info Category and Directory
+@c ====================================================================
+@dircategory Common Lisp
+@direntry
+* logicky-lisp Reference: (logicky-lisp). The logicky-lisp Reference Manual.
+@end direntry
+
+
+
+@c ====================================================================
+@c Title Page
+@c ====================================================================
+@titlepage
+@title The logicky-lisp Reference Manual
+@subtitle Evaluates and proves arguments in different formal logics, version 0.0.1
+
+@author Henrik Hörmann <@email{leinfink@atchar{}mailbox.org}>
+
+@page
+@quotation
+This manual was generated automatically by Declt 3.0.
+@end quotation
+@end titlepage
+
+
+
+@c ====================================================================
+@c Table of Contents
+@c ====================================================================
+@contents
+
+
+
+@c ====================================================================
+@c Top
+@c ====================================================================
+@ifnottex
+@node Top, Systems, (dir), (dir)
+@top The logicky-lisp Reference Manual
+This is the logicky-lisp Reference Manual, version 0.0.1,
+generated automatically by Declt version 3.0.
+
+@menu
+* Systems:: The systems documentation
+* Modules:: The modules documentation
+* Files:: The files documentation
+* Packages:: The packages documentation
+* Definitions:: The symbols documentation
+* Indexes:: Concepts, functions, variables and data types
+@end menu
+@end ifnottex
+
+
+
+@c ====================================================================
+@c Systems
+@c ====================================================================
+@node Systems, Modules, Top, Top
+@chapter Systems
+The main system appears first, followed by any subsystem dependency.
+
+@menu
+* The logicky-lisp system::
+@end menu
+
+
+@c -----------------------
+@c The logicky-lisp system
+@c -----------------------
+@node The logicky-lisp system, , Systems, Systems
+@section @t{logicky-lisp}
+@anchor{go to the logicky-lisp system}@c
+@systemindex{logicky-lisp}@c
+@table @strong
+@item Author
+Henrik Hörmann <@email{leinfink@atchar{}mailbox.org}>
+@item Home Page
+@uref{}
+@item Source Control
+@t{(:git "")}
+@item Bug Tracker
+@uref{}
+@item License
+BSD-3-Clause
+@item Description
+Evaluates and proves arguments in different formal logics.
+@item Version
+0.0.1
+@item Source
+@ref{go to the logicky-lisp․asd file, , @t{logicky-lisp.asd}} (file)
+@item Component
+@ref{go to the logicky-lisp/src module, , @t{src}} (module)
+@end table
+
+
+
+@c ====================================================================
+@c Modules
+@c ====================================================================
+@node Modules, Files, Systems, Top
+@chapter Modules
+Modules are listed depth-first from the system components tree.
+
+@menu
+* The logicky-lisp/src module::
+@end menu
+
+
+@c ---------------------------
+@c The logicky-lisp/src module
+@c ---------------------------
+@node The logicky-lisp/src module, , Modules, Modules
+@section @t{logicky-lisp/src}
+@anchor{go to the logicky-lisp/src module}@c
+@moduleindex{logicky-lisp/src}@c
+@table @strong
+@item Parent
+@ref{go to the logicky-lisp system, , @t{logicky-lisp}} (system)
+@item Location
+@t{src/}
+@item Components
+@itemize @bullet
+@item
+@ref{go to the logicky-lisp/src/packages․lisp file, , @t{packages.lisp}} (file)
+@item
+@ref{go to the logicky-lisp/src/logicky-lisp․lisp file, , @t{logicky-lisp.lisp}} (file)
+@item
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end itemize
+@end table
+
+
+
+@c ====================================================================
+@c Files
+@c ====================================================================
+@node Files, Packages, Modules, Top
+@chapter Files
+Files are sorted by type and then listed depth-first from the systems
+components trees.
+
+@menu
+* Lisp files::
+@end menu
+
+
+@c ----------
+@c Lisp files
+@c ----------
+@node Lisp files, , Files, Files
+@section Lisp
+@menu
+* The logicky-lisp.asd file: The logicky-lisp․asd file.
+* The logicky-lisp/src/packages.lisp file: The logicky-lisp/src/packages․lisp file.
+* The logicky-lisp/src/logicky-lisp.lisp file: The logicky-lisp/src/logicky-lisp․lisp file.
+* The logicky-lisp/src/logic.lisp file: The logicky-lisp/src/logic․lisp file.
+@end menu
+
+@node The logicky-lisp․asd file, The logicky-lisp/src/packages․lisp file, Lisp files, Lisp files
+@subsection @t{logicky-lisp.asd}
+@anchor{go to the logicky-lisp․asd file}@c
+@lispfileindex{logicky-lisp.asd}@c
+@table @strong
+@item Location
+@t{logicky-lisp.asd}
+@item Systems
+@ref{go to the logicky-lisp system, , @t{logicky-lisp}} (system)
+@end table
+
+@node The logicky-lisp/src/packages․lisp file, The logicky-lisp/src/logicky-lisp․lisp file, The logicky-lisp․asd file, Lisp files
+@subsection @t{logicky-lisp/src/packages.lisp}
+@anchor{go to the logicky-lisp/src/packages․lisp file}@c
+@lispfileindex{logicky-lisp/src/packages.lisp}@c
+@table @strong
+@item Parent
+@ref{go to the logicky-lisp/src module, , @t{src}} (module)
+@item Location
+@t{src/packages.lisp}
+@item Packages
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@end table
+
+@node The logicky-lisp/src/logicky-lisp․lisp file, The logicky-lisp/src/logic․lisp file, The logicky-lisp/src/packages․lisp file, Lisp files
+@subsection @t{logicky-lisp/src/logicky-lisp.lisp}
+@anchor{go to the logicky-lisp/src/logicky-lisp․lisp file}@c
+@lispfileindex{logicky-lisp/src/logicky-lisp.lisp}@c
+@table @strong
+@item Dependency
+@ref{go to the logicky-lisp/src/packages․lisp file, , @t{packages.lisp}} (file)
+@item Parent
+@ref{go to the logicky-lisp/src module, , @t{src}} (module)
+@item Location
+@t{src/logicky-lisp.lisp}
+@item Exported Definitions
+@ref{go to the LOGICKY-LISP∶∶MAIN function, , @t{main}} (function)
+@item Internal Definitions
+@itemize @bullet
+@item
+@ref{go to the LOGICKY-LISP∶∶%MAIN function, , @t{%main}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶GREET function, , @t{greet}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶HELP function, , @t{help}} (function)
+@end itemize
+@end table
+
+@node The logicky-lisp/src/logic․lisp file, , The logicky-lisp/src/logicky-lisp․lisp file, Lisp files
+@subsection @t{logicky-lisp/src/logic.lisp}
+@anchor{go to the logicky-lisp/src/logic․lisp file}@c
+@lispfileindex{logicky-lisp/src/logic.lisp}@c
+@table @strong
+@item Dependency
+@ref{go to the logicky-lisp/src/logicky-lisp․lisp file, , @t{logicky-lisp.lisp}} (file)
+@item Parent
+@ref{go to the logicky-lisp/src module, , @t{src}} (module)
+@item Location
+@t{src/logic.lisp}
+@item Exported Definitions
+@itemize @bullet
+@item
+@ref{go to the LOGICKY-LISP∶∶*INTERPRETATION* special variable, , @t{*interpretation*}} (special variable)
+@item
+@ref{go to the LOGICKY-LISP∶∶SEMANTIC-CONSEQUENCE-P function, , @t{semantic-consequence-p}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶TAUTOLOGYP function, , @t{tautologyp}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶TRUEP function, , @t{truep}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶WELL-FORMED-P function, , @t{well-formed-p}} (function)
+@end itemize
+@item Internal Definitions
+@itemize @bullet
+@item
+@ref{go to the LOGICKY-LISP∶∶*BINARY-CONNECTIVES* special variable, , @t{*binary-connectives*}} (special variable)
+@item
+@ref{go to the LOGICKY-LISP∶∶*UNARY-CONNECTIVES* special variable, , @t{*unary-connectives*}} (special variable)
+@item
+@ref{go to the LOGICKY-LISP∶∶ALL-INTERPRETATIONS function, , @t{all-interpretations}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶ASSERT-WFF macro, , @t{assert-wff}} (macro)
+@item
+@ref{go to the LOGICKY-LISP∶∶BINARY-CONNECTIVE-P function, , @t{binary-connective-p}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶CONNECTIVE-P function, , @t{connective-p}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶FIND-PARAMETERS function, , @t{find-parameters}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-AND function, , @t{l-and}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-COND function, , @t{l-cond}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-EQ function, , @t{l-eq}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-NOT function, , @t{l-not}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-OR function, , @t{l-or}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶PROPOSITIONAL-PARAMETER-P function, , @t{propositional-parameter-p}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶REDUCE-ATOMS macro, , @t{reduce-atoms}} (macro)
+@item
+@ref{go to the LOGICKY-LISP∶∶UNARY-CONNECTIVE-P function, , @t{unary-connective-p}} (function)
+@end itemize
+@end table
+
+
+
+@c ====================================================================
+@c Packages
+@c ====================================================================
+@node Packages, Definitions, Files, Top
+@chapter Packages
+Packages are listed by definition order.
+
+@menu
+* The logicky-lisp package::
+@end menu
+
+
+@c ------------------------
+@c The logicky-lisp package
+@c ------------------------
+@node The logicky-lisp package, , Packages, Packages
+@section @t{logicky-lisp}
+@anchor{go to the LOGICKY-LISP package}@c
+@packageindex{logicky-lisp}@c
+@table @strong
+@item Source
+@ref{go to the logicky-lisp/src/packages․lisp file, , @t{packages.lisp}} (file)
+@item Use List
+@t{common-lisp}
+@item Exported Definitions
+@itemize @bullet
+@item
+@ref{go to the LOGICKY-LISP∶∶*INTERPRETATION* special variable, , @t{*interpretation*}} (special variable)
+@item
+@ref{go to the LOGICKY-LISP∶∶MAIN function, , @t{main}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶SEMANTIC-CONSEQUENCE-P function, , @t{semantic-consequence-p}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶TAUTOLOGYP function, , @t{tautologyp}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶TRUEP function, , @t{truep}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶WELL-FORMED-P function, , @t{well-formed-p}} (function)
+@end itemize
+@item Internal Definitions
+@itemize @bullet
+@item
+@ref{go to the LOGICKY-LISP∶∶%MAIN function, , @t{%main}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶*BINARY-CONNECTIVES* special variable, , @t{*binary-connectives*}} (special variable)
+@item
+@ref{go to the LOGICKY-LISP∶∶*UNARY-CONNECTIVES* special variable, , @t{*unary-connectives*}} (special variable)
+@item
+@ref{go to the LOGICKY-LISP∶∶ALL-INTERPRETATIONS function, , @t{all-interpretations}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶ASSERT-WFF macro, , @t{assert-wff}} (macro)
+@item
+@ref{go to the LOGICKY-LISP∶∶BINARY-CONNECTIVE-P function, , @t{binary-connective-p}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶CONNECTIVE-P function, , @t{connective-p}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶FIND-PARAMETERS function, , @t{find-parameters}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶GREET function, , @t{greet}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶HELP function, , @t{help}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-AND function, , @t{l-and}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-COND function, , @t{l-cond}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-EQ function, , @t{l-eq}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-NOT function, , @t{l-not}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶L-OR function, , @t{l-or}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶PROPOSITIONAL-PARAMETER-P function, , @t{propositional-parameter-p}} (function)
+@item
+@ref{go to the LOGICKY-LISP∶∶REDUCE-ATOMS macro, , @t{reduce-atoms}} (macro)
+@item
+@ref{go to the LOGICKY-LISP∶∶UNARY-CONNECTIVE-P function, , @t{unary-connective-p}} (function)
+@end itemize
+@end table
+
+
+
+@c ====================================================================
+@c Definitions
+@c ====================================================================
+@node Definitions, Indexes, Packages, Top
+@chapter Definitions
+Definitions are sorted by export status, category, package, and then by
+lexicographic order.
+
+@menu
+* Exported definitions::
+* Internal definitions::
+@end menu
+
+
+@c --------------------
+@c Exported definitions
+@c --------------------
+@node Exported definitions, Internal definitions, Definitions, Definitions
+@section Exported definitions
+@menu
+* Exported special variables::
+* Exported functions::
+@end menu
+
+@node Exported special variables, Exported functions, Exported definitions, Exported definitions
+@subsection Special variables
+@defvr {Special Variable} *interpretation*
+@anchor{go to the LOGICKY-LISP∶∶*INTERPRETATION* special variable}@c
+@specialsubindex{*interpretation*}@c
+An alist that assings truth or falsehood to parameters.@*
+Truth of parameter P is stored as (P . T)@comma{} falsehood is stored as (P).
+Use (CDR (ASSOC P INTERPRETATION) to get the truth value of P.
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end defvr
+
+@node Exported functions, , Exported special variables, Exported definitions
+@subsection Functions
+@deffn {Function} {main} ()
+@anchor{go to the LOGICKY-LISP∶∶MAIN function}@c
+@functionsubindex{main}@c
+Entry point for the executable.
+  Reads command line arguments.
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logicky-lisp․lisp file, , @t{logicky-lisp.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {semantic-consequence-p} CONCLUSION &rest PREMISES
+@anchor{go to the LOGICKY-LISP∶∶SEMANTIC-CONSEQUENCE-P function}@c
+@functionsubindex{semantic-consequence-p}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {tautologyp} FORMULA
+@anchor{go to the LOGICKY-LISP∶∶TAUTOLOGYP function}@c
+@functionsubindex{tautologyp}@c
+Returns t if FORMULA is t under every possible interpretation (i.e. is a semantic
+consequence of the empty set of premises).
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {truep} FORMULA
+@anchor{go to the LOGICKY-LISP∶∶TRUEP function}@c
+@functionsubindex{truep}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {well-formed-p} FORMULA
+@anchor{go to the LOGICKY-LISP∶∶WELL-FORMED-P function}@c
+@functionsubindex{well-formed-p}@c
+Returns t if FORMULA is well-formed under the syntax of the active object language.
+Assumes that FORMULA is an s-expression. Recursively checks whether it is made up
+exclusively of propositional parameters (logical atoms) connected through the available
+logical operators.
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+
+
+@c --------------------
+@c Internal definitions
+@c --------------------
+@node Internal definitions, , Exported definitions, Definitions
+@section Internal definitions
+@menu
+* Internal special variables::
+* Internal macros::
+* Internal functions::
+@end menu
+
+@node Internal special variables, Internal macros, Internal definitions, Internal definitions
+@subsection Special variables
+@defvr {Special Variable} *binary-connectives*
+@anchor{go to the LOGICKY-LISP∶∶*BINARY-CONNECTIVES* special variable}@c
+@specialsubindex{*binary-connectives*}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end defvr
+@defvr {Special Variable} *unary-connectives*
+@anchor{go to the LOGICKY-LISP∶∶*UNARY-CONNECTIVES* special variable}@c
+@specialsubindex{*unary-connectives*}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end defvr
+
+@node Internal macros, Internal functions, Internal special variables, Internal definitions
+@subsection Macros
+@deffn {Macro} {assert-wff} FORMULA
+@anchor{go to the LOGICKY-LISP∶∶ASSERT-WFF macro}@c
+@macrosubindex{assert-wff}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Macro} {reduce-atoms} FORMULA RESULTF REDUCEF
+@anchor{go to the LOGICKY-LISP∶∶REDUCE-ATOMS macro}@c
+@macrosubindex{reduce-atoms}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+
+@node Internal functions, , Internal macros, Internal definitions
+@subsection Functions
+@deffn {Function} {%main} ARGV
+@anchor{go to the LOGICKY-LISP∶∶%MAIN function}@c
+@functionsubindex{%main}@c
+Parse CLI args.
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logicky-lisp․lisp file, , @t{logicky-lisp.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {all-interpretations} PARAMETERS
+@anchor{go to the LOGICKY-LISP∶∶ALL-INTERPRETATIONS function}@c
+@functionsubindex{all-interpretations}@c
+Returns a list of all possible interpretations of PARAMETERS.@*
+See `*interpretation*` for a description of the interpretation format.
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {binary-connective-p} FORMULA
+@anchor{go to the LOGICKY-LISP∶∶BINARY-CONNECTIVE-P function}@c
+@functionsubindex{binary-connective-p}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {connective-p} FORMULA CONNECTIVES NUM_ELEMENTS
+@anchor{go to the LOGICKY-LISP∶∶CONNECTIVE-P function}@c
+@functionsubindex{connective-p}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {find-parameters} FORMULA
+@anchor{go to the LOGICKY-LISP∶∶FIND-PARAMETERS function}@c
+@functionsubindex{find-parameters}@c
+Returns a list of all propositional parameters (logical atoms) in FORMULA.
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {greet} ()
+@anchor{go to the LOGICKY-LISP∶∶GREET function}@c
+@functionsubindex{greet}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logicky-lisp․lisp file, , @t{logicky-lisp.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {help} ()
+@anchor{go to the LOGICKY-LISP∶∶HELP function}@c
+@functionsubindex{help}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logicky-lisp․lisp file, , @t{logicky-lisp.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {l-and} P Q
+@anchor{go to the LOGICKY-LISP∶∶L-AND function}@c
+@functionsubindex{l-and}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {l-cond} P Q
+@anchor{go to the LOGICKY-LISP∶∶L-COND function}@c
+@functionsubindex{l-cond}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {l-eq} P Q
+@anchor{go to the LOGICKY-LISP∶∶L-EQ function}@c
+@functionsubindex{l-eq}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {l-not} P
+@anchor{go to the LOGICKY-LISP∶∶L-NOT function}@c
+@functionsubindex{l-not}@c
+Logical negation. Returns nil if P is t. Otherwise returns t.
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {l-or} P Q
+@anchor{go to the LOGICKY-LISP∶∶L-OR function}@c
+@functionsubindex{l-or}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {propositional-parameter-p} FORMULA
+@anchor{go to the LOGICKY-LISP∶∶PROPOSITIONAL-PARAMETER-P function}@c
+@functionsubindex{propositional-parameter-p}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {unary-connective-p} FORMULA
+@anchor{go to the LOGICKY-LISP∶∶UNARY-CONNECTIVE-P function}@c
+@functionsubindex{unary-connective-p}@c
+@table @strong
+@item Package
+@ref{go to the LOGICKY-LISP package, , @t{logicky-lisp}}
+@item Source
+@ref{go to the logicky-lisp/src/logic․lisp file, , @t{logic.lisp}} (file)
+@end table
+@end deffn
+
+
+
+@c ====================================================================
+@c Indexes
+@c ====================================================================
+@node Indexes, , Definitions, Top
+@appendix Indexes
+@menu
+* Concept index::
+* Function index::
+* Variable index::
+* Data type index::
+@end menu
+
+
+@c -------------
+@c Concept index
+@c -------------
+@node Concept index, Function index, Indexes, Indexes
+@appendixsec Concepts
+@printindex cp
+
+@page
+
+
+@c --------------
+@c Function index
+@c --------------
+@node Function index, Variable index, Concept index, Indexes
+@appendixsec Functions
+@printindex fn
+
+@page
+
+
+@c --------------
+@c Variable index
+@c --------------
+@node Variable index, Data type index, Function index, Indexes
+@appendixsec Variables
+@printindex vr
+
+@page
+
+
+@c ---------------
+@c Data type index
+@c ---------------
+@node Data type index, , Variable index, Indexes
+@appendixsec Data types
+@printindex tp
+
+@bye
+
+@c logicky-lisp.texi ends here
