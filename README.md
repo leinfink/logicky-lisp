@@ -1,12 +1,18 @@
 # logicky-lisp
 
+**WIP, not much functionality yet.**
+
+-----
+
 Evaluate and prove arguments in different formal logics.
 
 Completely rewritten Common Lisp port of [Logicky](https://github.com/leinfink/logicky).  Mostly just to practice Common Lisp.
 
-WIP, not much functionality yet.
+
 
 ## Usage
+
+[Full reference manual](https://leinfink.github.io/logicky-lisp/) (incl. internal symbols)
 
 Run from sources:
 
