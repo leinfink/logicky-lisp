@@ -31,4 +31,4 @@ jobs:
           asdf-system: logicky-lisp
       - uses: 40ants/run-tests@v2
         with:
-          asdf-system: logicky-lisp-tests
+          asdf-system: logicky-lisp
