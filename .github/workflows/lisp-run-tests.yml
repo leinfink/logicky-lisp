@@ -31,6 +31,7 @@ jobs:
           asdf-system: logicky-lisp
       - uses: 40ants/run-tests@v2
         with:
-          asdf-system: logicky-lisp
+          asdf-system: logicky-lisp-tests
           run-tests: |
+            (ql:quickload "logicky-lisp-tests")
             (unless (logicky-lisp-tests::run-all-tests) (error "Tests failed"))
