@@ -33,4 +33,5 @@ jobs:
         with:
           asdf-system: logicky-lisp-tests
           run-tests: |
+            (ql:quickload "logicky-lisp-tests")
             (unless (logicky-lisp-tests::run-all-tests) (error "Tests failed"))
