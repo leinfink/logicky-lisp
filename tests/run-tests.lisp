@@ -1,6 +1,6 @@
 (load "logicky-lisp.asd")
 
-(ql:quickload "logicky-lisp-tests")
+(ql:quickload "logicky-lisp/tests")
 
 (in-package :logicky-lisp-tests)
 
