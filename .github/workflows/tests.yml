@@ -35,5 +35,4 @@ jobs:
           coveralls-token: |
             ${{ matrix.lisp == 'sbcl-bin' &&
             matrix.os == 'ubuntu-latest' &&
-            matrix.quicklisp-dist == 'ultralisp' &&
             secrets.github_token }}
