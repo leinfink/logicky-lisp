@@ -6,4 +6,10 @@
    :truep
    :semantic-consequence-p
    :tautologyp
-   :*interpretation*))
+   :*interpretation*
+   :all-interpretations
+   :l-not
+   :l-or
+   :l-cond
+   :l-and
+   :l-eq))

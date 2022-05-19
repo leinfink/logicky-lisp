@@ -34,7 +34,7 @@ logical operators."
 
 (defmacro assert-wff (formula)
   `(assert (well-formed-p ,formula)
-           (,formula)
+           ,(if (listp formula) nil `(,formula))
            "~S is not a well-formed formula."
            ,formula))
 
