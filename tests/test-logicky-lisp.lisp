@@ -40,4 +40,5 @@
                             (lg:l-eq p r)
                             (lg:l-not (lg:l-eq p q)))))))
                                      
-                                 
+(test test-semantic-consequence-p
+  (is (lg:semantic-consequence-p 'q '(l-cond p q) 'p)))

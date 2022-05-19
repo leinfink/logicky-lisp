@@ -66,14 +66,20 @@ Use (CDR (ASSOC P INTERPRETATION) to get the truth value of P.")
   `(mapcar #'(lambda (x) (acons ,car ,val (if (consp (cdr x)) x (list x))))
            ,list))
 
+(defun all-interpretations-recursive (parameters)
+  (cond ((null (rest parameters)) (cons (cons (car parameters) t) ; (P . T)
+                                        (cons parameters nil))) ; (P)
+        (t (let ((interpretations (all-interpretations-recursive (rest parameters))))
+             (append (mapcar-cons-flat (first parameters) t interpretations)
+                     (mapcar-cons-flat (first parameters) nil interpretations))))))
+
 (defun all-interpretations (parameters)
   "Returns a list of all possible interpretations of PARAMETERS.
 See `*interpretation*` for a description of the interpretation format."
-  (cond ((null (rest parameters)) (cons (cons (car parameters) t) ; (P . T)
-                                        (cons parameters nil))) ; (P)
-        (t (let ((interpretations (all-interpretations (rest parameters))))
-             (append (mapcar-cons-flat (first parameters) t interpretations)
-                     (mapcar-cons-flat (first parameters) nil interpretations))))))
+  (let ((interpretations (all-interpretations-recursive parameters)))
+    (if (= (length parameters) 1)
+        (mapcar #'(lambda (x) (list x)) interpretations)
+        interpretations)))
 
 ;;; Connectors
 
@@ -108,7 +114,7 @@ See `*interpretation*` for a description of the interpretation format."
   (mapcar #'(lambda (premiss) (assert-wff premiss)) premises)
   (notany #'(lambda (x)
               (let ((*interpretation* x))
-                (when (every #'truep premises)
+                (when (every #'truep premises)                  
                   (not (truep conclusion)))))
           (all-interpretations (find-parameters conclusion))))
 
