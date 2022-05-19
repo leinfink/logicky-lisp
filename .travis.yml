@@ -20,7 +20,7 @@ install:
     - curl https://raw.githubusercontent.com/luismbo/cl-travis/master/install.sh | bash
 
 script:
-    # Run the logicky-lisp tests using lisp-unit
+    # Run the logicky-lisp tests using lisp-unit:
     cl -e '(ql:quickload :logicky-lisp-tests)
            (unless (logicky-lisp/tests:run)
              (uiop:quit 1))'
