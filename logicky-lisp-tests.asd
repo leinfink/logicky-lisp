@@ -11,7 +11,7 @@
                         :serial t
                         :components ((:file "packages")
                                      (:file "test-logicky-lisp"))))
-
-  ;; The following would not return the right exit code on error, but still 0.
-  :perform (test-op (op _) (symbol-call :fiveam :run-all-tests))
+  
+  :perform (test-op (op _) (unless (uiop:symbol-call :fiveam '#:run-all-tests)
+                             (uiop:quit 1)))
   )
