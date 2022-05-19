@@ -62,20 +62,19 @@ logical operators."
 Truth of parameter P is stored as (P . T), falsehood is stored as (P).
 Use (CDR (ASSOC P INTERPRETATION) to get the truth value of P.")
 
+(defmacro mapcar-cons-flat (car val list)
+  `(mapcar #'(lambda (x) (cons (cons ,car , val)
+                               (if (consp (cdr x)) x (list x))))
+           ,list))
+
 (defun all-interpretations (parameters)
   "Returns a list of all possible interpretations of PARAMETERS.
-PARAMETERS should end with an atom [like this: (p q . r)], not with nil.
 See `*interpretation*` for a description of the interpretation format."
-  (cond ((null (cdr parameters)) (cons
-                                  (cons (car parameters) t)
-                                  (cons parameters nil)))
-        (t (flet ((add-interpretation (value)
-                    (mapcar #'(lambda (x)
-                                (cons
-                                 (cons (first parameters) value)
-                                 x))
-                            (all-interpretations (rest parameters)))))
-             (reduce #'append (mapcar #'add-interpretation '(t nil)))))))
+  (cond ((null (rest parameters)) (cons (cons (car parameters) t)
+                                        (cons parameters nil)))
+        (t (let ((interpretations (all-interpretations (rest parameters))))
+             (append (mapcar-cons-flat (first parameters) t interpretations)
+                     (mapcar-cons-flat (first parameters) nil interpretations))))))
 
 ;;; Connectors
 
