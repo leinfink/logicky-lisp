@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Exported special variables (The logicky-lisp Reference Manual)</title>
+
+<meta name="description" content="The logicky-lisp Reference Manual, version 0.0.1.">
+<meta name="keywords" content="Exported special variables (The logicky-lisp Reference Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Exported-definitions.html" rel="up" title="Exported definitions">
+<link href="Exported-functions.html" rel="next" title="Exported functions">
+<link href="Exported-definitions.html" rel="prev" title="Exported definitions">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection" id="Exported-special-variables">
+<div class="header">
+<p>
+Next: <a href="Exported-functions.html" accesskey="n" rel="next">Functions</a>, Previous: <a href="Exported-definitions.html" accesskey="p" rel="prev">Exported definitions</a>, Up: <a href="Exported-definitions.html" accesskey="u" rel="up">Exported definitions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Special-variables"></span><h4 class="subsection">5.1.1 Special variables</h4>
+<dl class="def">
+<dt id="index-_002ainterpretation_002a"><span class="category">Special Variable: </span><span><strong>*interpretation*</strong><a href='#index-_002ainterpretation_002a' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236_002aINTERPRETATION_002a-special-variable"></span><span id="index-Special-Variable_002c-_002ainterpretation_002a"></span>
+<p>An alist that assings truth or falsehood to parameters.<br>
+Truth of parameter P is stored as (P . T), falsehood is stored as (P).
+Use (CDR (ASSOC P INTERPRETATION) to get the truth value of P.
+</p><dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogic_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogic_2024lisp-file"><tt>logic.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+
+</body>
+</html>

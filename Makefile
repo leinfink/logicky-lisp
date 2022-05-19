@@ -14,3 +14,8 @@ build:
 test:
 	$(LISP) --non-interactive \
 		--load tests/run-tests.lisp
+
+# declt only works with SBCL
+generate-docs:
+	sbcl	--non-interactive \
+		--load docs/make-docs.lisp

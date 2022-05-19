@@ -1,6 +1,7 @@
 (in-package :asdf-user)
 
 (defsystem "logicky-lisp"
+  :long-name "Logicky-Lisp"
   :author "Henrik Hörmann <leinfink@mailbox.org>"
   :version "0.0.1"
   :license "BSD-3-Clause"

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Internal functions (The logicky-lisp Reference Manual)</title>
+
+<meta name="description" content="The logicky-lisp Reference Manual, version 0.0.1.">
+<meta name="keywords" content="Internal functions (The logicky-lisp Reference Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Internal-definitions.html" rel="up" title="Internal definitions">
+<link href="Internal-macros.html" rel="prev" title="Internal macros">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection" id="Internal-functions">
+<div class="header">
+<p>
+Previous: <a href="Internal-macros.html" accesskey="p" rel="prev">Macros</a>, Up: <a href="Internal-definitions.html" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Functions-1"></span><h4 class="subsection">5.2.3 Functions</h4>
+<dl class="def">
+<dt id="index-_0025main"><span class="category">Function: </span><span><strong>%main</strong> <em>ARGV</em><a href='#index-_0025main' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236_0025MAIN-function"></span><span id="index-Function_002c-_0025main"></span>
+<p>Parse CLI args.
+</p><dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogicky_002dlisp_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogicky_002dlisp_2024lisp-file"><tt>logicky-lisp.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl class="def">
+<dt id="index-all_002dinterpretations_002drecursive"><span class="category">Function: </span><span><strong>all-interpretations-recursive</strong> <em>PARAMETERS</em><a href='#index-all_002dinterpretations_002drecursive' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236ALL_002dINTERPRETATIONS_002dRECURSIVE-function"></span><span id="index-Function_002c-all_002dinterpretations_002drecursive"></span>
+<dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogic_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogic_2024lisp-file"><tt>logic.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl class="def">
+<dt id="index-binary_002dconnective_002dp"><span class="category">Function: </span><span><strong>binary-connective-p</strong> <em>FORMULA</em><a href='#index-binary_002dconnective_002dp' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236BINARY_002dCONNECTIVE_002dP-function"></span><span id="index-Function_002c-binary_002dconnective_002dp"></span>
+<dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogic_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogic_2024lisp-file"><tt>logic.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl class="def">
+<dt id="index-connective_002dp"><span class="category">Function: </span><span><strong>connective-p</strong> <em>FORMULA CONNECTIVES NUM_ELEMENTS</em><a href='#index-connective_002dp' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236CONNECTIVE_002dP-function"></span><span id="index-Function_002c-connective_002dp"></span>
+<dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogic_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogic_2024lisp-file"><tt>logic.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl class="def">
+<dt id="index-find_002dparameters"><span class="category">Function: </span><span><strong>find-parameters</strong> <em>FORMULA</em><a href='#index-find_002dparameters' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236FIND_002dPARAMETERS-function"></span><span id="index-Function_002c-find_002dparameters"></span>
+<p>Returns a list of all propositional parameters (logical atoms) in FORMULA.
+</p><dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogic_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogic_2024lisp-file"><tt>logic.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl class="def">
+<dt id="index-greet"><span class="category">Function: </span><span><strong>greet</strong> <em>()</em><a href='#index-greet' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236GREET-function"></span><span id="index-Function_002c-greet"></span>
+<dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogicky_002dlisp_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogicky_002dlisp_2024lisp-file"><tt>logicky-lisp.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl class="def">
+<dt id="index-help"><span class="category">Function: </span><span><strong>help</strong> <em>()</em><a href='#index-help' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236HELP-function"></span><span id="index-Function_002c-help"></span>
+<dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogicky_002dlisp_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogicky_002dlisp_2024lisp-file"><tt>logicky-lisp.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl class="def">
+<dt id="index-propositional_002dparameter_002dp"><span class="category">Function: </span><span><strong>propositional-parameter-p</strong> <em>FORMULA</em><a href='#index-propositional_002dparameter_002dp' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236PROPOSITIONAL_002dPARAMETER_002dP-function"></span><span id="index-Function_002c-propositional_002dparameter_002dp"></span>
+<dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogic_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogic_2024lisp-file"><tt>logic.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl class="def">
+<dt id="index-unary_002dconnective_002dp"><span class="category">Function: </span><span><strong>unary-connective-p</strong> <em>FORMULA</em><a href='#index-unary_002dconnective_002dp' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="go-to-the-LOGICKY_002dLISP_2236_2236UNARY_002dCONNECTIVE_002dP-function"></span><span id="index-Function_002c-unary_002dconnective_002dp"></span>
+<dl compact="compact">
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp-package.html#go-to-the-LOGICKY_002dLISP-package"><tt>logicky-lisp</tt></a>
+</p></dd>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="The-logicky_002dlisp_002fsrc_002flogic_002elisp-file.html#go-to-the-logicky_002dlisp_002fsrc_002flogic_2024lisp-file"><tt>logic.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+
+
+</div>
+
+
+
+</body>
+</html>
