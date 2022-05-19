@@ -28,8 +28,7 @@
                    ((p) (q . t) (r))
                    ((p) (q) (r . t))
                    ((p) (q) (r)))
-                 :test #'equal)))
-  )
+                 :test #'equal))))
 
 (test test-truep
   (let ((lg:*interpretation* '((p . t) (q) (r . t))))
