@@ -47,6 +47,6 @@
                              (:file "test-logicky-lisp"))))
   
   :perform (test-op (op _) (coveralls:with-coveralls ()
-                                                     (unless (uiop:symbol-call :fiveam '#:run-all-tests)
-                                                        (uiop:quit 1))))
+                             (unless (uiop:symbol-call :fiveam '#:run-all-tests)
+                               (uiop:quit 1))))
   )
