@@ -1,5 +1,5 @@
 # logicky-lisp
-[![tests](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml) [![Coverage Status](https://coveralls.io/repos/github/leinfink/logicky-lisp/badge.svg?branch=main)](https://coveralls.io/github/leinfink/logicky-lisp?branch=main)
+[![tests](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml)
 
 **WIP, not much functionality yet.**
 
