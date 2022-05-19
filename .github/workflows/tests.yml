@@ -32,7 +32,5 @@ jobs:
       - uses: 40ants/run-tests@v2
         with:
           asdf-system: logicky-lisp
-      - uses: coverallsapp/github-action@1.1.3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coveralls-token: ${{ secrets.github_token }}
 
