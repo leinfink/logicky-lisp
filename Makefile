@@ -13,4 +13,4 @@ build:
 
 test:
 	$(LISP) --non-interactive \
-		--load run-tests.lisp
+		--load tests/run-tests.lisp
