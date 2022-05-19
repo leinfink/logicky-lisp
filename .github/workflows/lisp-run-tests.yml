@@ -12,7 +12,7 @@ on:
 
 jobs:          
 
-  tests:
+  tests-and-docs:
     runs-on: ubuntu-latest
     
     strategy:
@@ -30,5 +30,8 @@ jobs:
         with:
           asdf-system: logicky-lisp
       - uses: 40ants/run-tests@v2
+        with:
+          asdf-system: logicky-lisp
+      - uses: 40ants/build-docs@v1.3.0
         with:
           asdf-system: logicky-lisp
