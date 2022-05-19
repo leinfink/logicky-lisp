@@ -37,8 +37,7 @@
   :author "Henrik Hörmann <leinfink@mailbox.org>"
   :version "0.0.1"
   :depends-on (:logicky-lisp
-               :fiveam
-               :cl-coveralls)
+               :fiveam)
   :license "BSD-3-Clause"
   :serial t
   :components ((:module "tests"
@@ -46,7 +45,6 @@
                 :components ((:file "packages")
                              (:file "test-logicky-lisp"))))
   
-  :perform (test-op (op _) (coveralls:with-coveralls ()
-                             (unless (uiop:symbol-call :fiveam '#:run-all-tests)
-                               (uiop:quit 1))))
+  :perform (test-op (op _) (unless (uiop:symbol-call :fiveam '#:run-all-tests)
+                               (uiop:quit 1)))
   )
