@@ -28,10 +28,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: 40ants/setup-lisp@v2
         with:
-          asdf-system: logicky-lisp/tests
+          asdf-system: logicky-lisp
       - uses: 40ants/run-tests@v2
         with:
-          asdf-system: logicky-lisp/tests
+          asdf-system: logicky-lisp
           coveralls-token: |
             ${{ matrix.lisp == 'sbcl-bin' &&
             matrix.os == 'ubuntu-latest' &&
