@@ -32,4 +32,4 @@ jobs:
       - uses: 40ants/run-tests@v2
         with:
           asdf-system: logicky-lisp
-          coveralls-token: ${{ secrets.github_token }}
+          coveralls-token: ${{ secrets.GITHUB_TOKEN }}
