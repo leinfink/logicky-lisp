@@ -1,5 +1,5 @@
 # logicky-lisp
-[![tests](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml)
+[![tests](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/leinfink/logicky-lisp)
 
 **WIP, not much functionality yet.**
 
