@@ -32,5 +32,8 @@ jobs:
       - uses: 40ants/run-tests@v2
         with:
           asdf-system: logicky-lisp
-          coveralls-token: ${{ secrets.github_token }}
-
+          coveralls-token: |
+            ${{ matrix.lisp == 'sbcl-bin' &&
+            matrix.os == 'ubuntu-latest' &&
+            matrix.quicklisp-dist == 'ultralisp' &&
+            secrets.github_token }}
