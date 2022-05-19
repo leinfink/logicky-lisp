@@ -13,7 +13,7 @@ Completely rewritten Common Lisp port of [Logicky](https://github.com/leinfink/l
 
 ## Usage
 
-[Full reference manual](https://leinfink.github.io/logicky-lisp/) (incl. internal symbols)
+[Full reference manual](https://leinfink.github.io/logicky-lisp/reference/) (incl. internal symbols)
 
 Run from sources:
 
