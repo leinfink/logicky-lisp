@@ -32,3 +32,5 @@ jobs:
       - uses: 40ants/run-tests@v2
         with:
           asdf-system: logicky-lisp
+      - uses: coverallsapp/github-action@1.1.3
+
