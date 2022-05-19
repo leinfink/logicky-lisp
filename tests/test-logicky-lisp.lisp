@@ -1,12 +1,24 @@
 (in-package :logicky-lisp-tests)
 
-;; Define your project tests here...
+(def-suite test-semantics
+    :description "Test semantics")
 
-(def-suite testmain
-    :description "test suite 1")
+(in-suite test-semantics)
 
-(in-suite testmain)
+(test test-set-interpretation
+      (let ((logicky-lisp:*interpretation* '((p . t) (q))))
+        (is (cdr (assoc 'p *interpretation*)))
+        (is (not (cdr (assoc 'q *interpretation*))))))
 
-(test test1
-  (is (= (+ 1 1)
-         2)))
+(test test-all-interpretations
+      (is (null (nset-exclusive-or
+                 (logicky-lisp::all-interpretations '(p . q))
+                 '(((p . t) (q . t)) ((p . t) (q))
+                   ((p) (q . t)) ((p) (q)))
+                 :test #'equal)))
+      (is (null (nset-exclusive-or
+                 (logicky-lisp::all-interpretations '(p q . r))
+                 '(((p . t) (q . t)) ((p . t) (q))
+                   ((p) (q . t)) ((p) (q)))
+                 :test #'equal)))
+      )

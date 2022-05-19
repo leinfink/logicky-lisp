@@ -5,7 +5,7 @@
   :version "0.0.1"
   :depends-on (:logicky-lisp
                :fiveam)
-  :license "BSD"
+  :license "BSD-3-Clause"
   :serial t
   :components ((:module "tests"
                         :serial t

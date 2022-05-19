@@ -64,15 +64,16 @@ Use (CDR (ASSOC P INTERPRETATION) to get the truth value of P.")
 
 (defun all-interpretations (parameters)
   "Returns a list of all possible interpretations of PARAMETERS.
+PARAMETERS should end with an atom [like this: (p q . r)], not with nil.
 See `*interpretation*` for a description of the interpretation format."
-  (cond ((atom parameters) (list
-                            (cons parameters t)
-                            (cons parameters nil)))
+  (cond ((null (cdr parameters)) (cons
+                                  (cons (car parameters) t)
+                                  (cons parameters nil)))
         (t (flet ((add-interpretation (value)
                     (mapcar #'(lambda (x)
-                                (funcall (if (consp (cdr x)) #'cons #'list)
-                                         (cons (first parameters) value)
-                                         x))
+                                (cons
+                                 (cons (first parameters) value)
+                                 x))
                             (all-interpretations (rest parameters)))))
              (reduce #'append (mapcar #'add-interpretation '(t nil)))))))
 
