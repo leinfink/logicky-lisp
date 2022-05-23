@@ -1,5 +1,5 @@
 # Logicky Lisp
-[![tests](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml) [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/leinfink/logicky-lisp)]() [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/leinfink/logicky-lisp?color=%23ffa640)]()
+[![tests](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/leinfink/logicky-lisp/actions/workflows/tests.yml) [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/leinfink/logicky-lisp)](https://github.com/leinfink/logicky-lisp/commits/) [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/leinfink/logicky-lisp?color=%23ffa640)](https://github.com/leinfink/logicky-lisp)
 
 **WIP, not much functionality yet.**
 
