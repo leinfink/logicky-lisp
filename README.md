@@ -9,7 +9,7 @@ Evaluate and prove arguments in different formal logics.
 
 Completely rewritten Common Lisp port of [Logicky](https://github.com/leinfink/logicky).  Mostly just to practice Common Lisp.
 
-Tested for SBCL 2.2.4 and CCL 1.12.1.
+Tested on SBCL 2.2.4 and CCL 1.12.1.
 
 ## Usage
 
