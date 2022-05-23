@@ -40,4 +40,11 @@
                             (lg:l-not (lg:l-eq p q)))))))
                                      
 (test test-semantic-consequence-p
-  (is (lg:semantic-consequence-p 'q '(l-cond p q) 'p)))
+      (is (lg:semantic-consequence-p 'q '(l-cond p q) 'p))
+      (is (lg:semantic-consequence-p 'p '(l-or p q) '(l-not q)))
+      (is (not (lg:semantic-consequence-p 'p '(l-cond q p) '(l-not q)))))
+
+(test test-tautology-p
+      (is (lg:tautologyp '(l-or p (l-not p))))
+      (is (lg:tautologyp '(l-cond (l-and (l-cond p q) p) q)))
+      (is (not (lg:tautologyp '(l-cond  (l-and (l-cond p q) q) p)))))
