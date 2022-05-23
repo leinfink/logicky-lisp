@@ -4,7 +4,7 @@
 (asdf:oos 'asdf:load-op :logicky-lisp :force t)
 (asdf:test-system :logicky-lisp)
 
-#+sbcl (sb-cover:report "coverage/" :form-mode :whole)
+#+sbcl (sb-cover:report "tests/coverage/" :form-mode :whole)
 #+sbcl (declaim (optimize (sb-cover:store-coverage-data 0)))
 
 

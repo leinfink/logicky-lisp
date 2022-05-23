@@ -38,3 +38,4 @@ tramp
 # cask packages
 .cask/
 /coverage/
+/tests/coverage/
