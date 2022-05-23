@@ -126,3 +126,5 @@ consequence of the empty set of premises)."
 
 ;;; --- Proof calculus ---
 
+(defun construct-branches (formula)
+  )

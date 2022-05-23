@@ -1,7 +1,11 @@
-(load "logicky-lisp.asd")
+#+sbcl (require :sb-cover)
+#+sbcl (declaim (optimize sb-cover:store-coverage-data))
 
-(ql:quickload "logicky-lisp/tests")
+(asdf:oos 'asdf:load-op :logicky-lisp :force t)
+(asdf:test-system :logicky-lisp)
 
-(in-package :logicky-lisp-tests)
+#+sbcl (sb-cover:report "coverage/" :form-mode :whole)
+#+sbcl (declaim (optimize (sb-cover:store-coverage-data 0)))
 
-(uiop:quit (if (run-all-tests) 0 1))
+
+

@@ -37,3 +37,4 @@ tramp
 
 # cask packages
 .cask/
+/coverage/
