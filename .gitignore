@@ -37,5 +37,7 @@ tramp
 
 # cask packages
 .cask/
+
+# locally started code coverage
 /coverage/
 /tests/coverage/

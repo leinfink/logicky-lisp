@@ -46,5 +46,4 @@
                              (:file "test-logicky-lisp"))))
   
   :perform (test-op (op _) (unless (uiop:symbol-call :fiveam '#:run-all-tests)
-                               (uiop:quit 1)))
-  )
+                               (uiop:quit 1))))
